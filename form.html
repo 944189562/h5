@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <form action="">
+      <div>
+        <select id="groups" name="groups">
+          <optgroup label="fruits">
+            <option>Banana</option>
+            <option selected>Cherry</option>
+            <option>Lemon</option>
+          </optgroup>
+          <optgroup label="vegetables">
+            <option>Carrot</option>
+            <option>Eggplant</option>
+            <option>Potato</option>
+          </optgroup>
+        </select>
+      </div>
+      <div>
+        <select multiple id="multi" name="multi">
+          <option>Banana</option>
+          <option>Cherry</option>
+          <option>Lemon</option>
+        </select>
+      </div>
+      <div>
+        <label for="myFruit">What's your favorite fruit?</label>
+        <input type="text" name="myFruit" id="myFruit" list="mySuggestion" />
+        <datalist id="mySuggestion">
+          <option>Apple</option>
+          <option>Banana</option>
+          <option>Blackberry</option>
+          <option>Blueberry</option>
+          <option>Lemon</option>
+          <option>Lychee</option>
+          <option>Peach</option>
+          <option>Pear</option>
+        </datalist>
+      </div>
+      <div>
+        <label for="myFruit"
+          >What is your favorite fruit? (With fallback)</label
+        >
+        <input type="text" id="myFruit" name="fruit" list="fruitList" />
+        <datalist id="fruitList">
+          <label for="suggestion">or pick a fruit</label>
+          <select id="suggestion" name="altFruit">
+            <option>Apple</option>
+            <option>Banana</option>
+            <option>Blackberry</option>
+            <option>Blueberry</option>
+            <option>Lemon</option>
+            <option>Lychee</option>
+            <option>Peach</option>
+            <option>Pear</option>
+          </select>
+        </datalist>
+      </div>
+      <fieldset>
+        <legend>What is your favorite meal?</legend>
+        <ul>
+          <li>
+            <label for="soup">Soup</label>
+            <input type="radio" checked id="soup" name="meal" value="soup" />
+          </li>
+          <li>
+            <label for="curry">Curry</label>
+            <input type="radio" id="curry" name="meal" value="curry" />
+          </li>
+          <li>
+            <label for="pizza">Pizza</label>
+            <input type="radio" id="pizza" name="meal" value="pizza" />
+          </li>
+        </ul>
+      </fieldset>
+      <div>
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age" min="1" max="10" step="2" />
+      </div>
+      <div>
+        <label for="beans">Beans</label>
+        <input
+          type="range"
+          name="beans"
+          id="beans"
+          min="0"
+          max="500"
+          step="10"
+        />
+        <span class="beancount"></span>
+      </div>
+      <div>
+        <label for="datetime">Datetime</label>
+        <input type="datetime-local" name="datetime" id="datetime" />
+      </div>
+      <div>
+        <label for="month">Month</label>
+        <input type="month" name="month" id="month" />
+      </div>
+      <div>
+        <label for="time">Time</label>
+        <input type="time" name="time" id="time" />
+      </div>
+      <div>
+        <label for="week">Week</label>
+        <input type="week" name="week" id="week" />
+      </div>
+      <div>
+        <label for="myDate">When are you available this summer?</label>
+        <input
+          type="date"
+          name="myDate"
+          min="2013-06-01"
+          max="2013-08-31"
+          id="myDate"
+        />
+      </div>
+      <div>
+        <label for="color">Color</label>
+        <input type="color" name="color" id="color" />
+      </div>
+      <progress max="100" value="75">75/100</progress>
+      <meter min="0" max="100" value="75" low="33" high="66" optimum="50">75</meter>
+    </form>
+    <script>
+      var beans = document.querySelector('#beans')
+      var count = document.querySelector('.beancount')
+
+      count.textContent = beans.value
+
+      beans.oninput = function () {
+        count.textContent = beans.value
+      }
+    </script>
+  </body>
+</html>

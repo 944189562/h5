@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 4px;
+      }
+      th {
+        cursor: pointer;
+      }
+      th:hover {
+        background: yellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table id="grid">
+      <thead>
+        <tr>
+          <th data-type="number">Age</th>
+          <th data-type="string">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>5</td>
+          <td>John</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Pete</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Ann</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Eugene</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Ilya</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      // grid.addEventListener('click', function (evt) {
+      //   const type = evt.target.dataset.type
+      //   if (type) {
+      //     if (type === 'number') {
+      //       let rows = Array.from(grid.tBodies[0].rows)
+      //       rows.sort((row1, row2) => row1.cells[0].innerHTML - row2.cells[0].innerHTML)
+      //       grid.tBodies[0].append(...rows)
+      //     }
+      //     if (type === 'string') {
+      //       let rows = Array.from(grid.tBodies[0].rows)
+      //       rows.sort((row1, row2) => row1.cells[1].innerHTML > row2.cells[1].innerHTML ? 1 : -1)
+      //       grid.tBodies[0].append(...rows)
+      //     }
+      //   }
+      // })
+      grid.onclick = function (e) {
+        if (e.target.tagName !== 'TH') return
+
+        let th = e.target
+        sortGrid(th.cellIndex, th.dataset.type)
+      }
+
+      function sortGrid(colNum, type) {
+        let tbody = grid.querySelector('tbody')
+
+        let rowsArr = Array.from(tbody.rows)
+
+        let compare
+
+        switch (type) {
+          case 'number':
+            compare = function (rowA, rowB) {
+              return rowA.cells[colNum].innerHTML - rowB.cells[colNum].innerHTML
+            }
+            break
+          case 'string':
+            compare = function (rowA, rowB) {
+              return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML
+                ? 1
+                : -1
+            }
+            break
+          default:
+            break
+        }
+
+        rowsArr.sort(compare)
+        tbody.append(...rowsArr)
+      }
+    </script>
+  </body>
+</html>

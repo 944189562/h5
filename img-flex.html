@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        width: 100%;
+        height: 100%;
+      }
+      ul {
+        display: flex;
+        width: 100%;
+      }
+      li > img {
+        width: 100%;
+        height: auto;
+      }
+      picture {
+        width: 100%;
+      }
+      picture img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <ul>
+        <li>
+          <img
+            srcset="
+            https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/firefox-logo120.png 120w,
+            https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/firefox-logo400.png 400w
+            "
+            sizes="(max-width: 500px) 120px,
+                      400px"
+            src="https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/firefox-logo400.png"
+            alt="下载 Firefox"
+          />
+        </li>
+        <li>
+          <img
+            srcset="
+            https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/firefox-logo120.png 120w,
+            https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/firefox-logo400.png 400w
+            "
+            sizes="(max-width: 500px) 120px,
+                      400px"
+            src="https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/firefox-logo400.png"
+            alt="下载 Firefox"
+          />
+        </li>
+        <li><img
+          srcset="
+          https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/firefox-logo120.png 120w,
+          https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/firefox-logo400.png 400w
+          "
+          sizes="(max-width: 500px) 120px,
+                    400px"
+          src="https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/firefox-logo400.png"
+          alt="下载 Firefox"
+        /></li>
+        <li><img
+          srcset="
+          https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/firefox-logo120.png 120w,
+          https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/firefox-logo400.png 400w
+          "
+          sizes="(max-width: 500px) 120px,
+                    400px"
+          src="https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/firefox-logo400.png"
+          alt="下载 Firefox"
+        /></li>
+      </ul>
+      <picture>
+        <source media="(max-width: 600px)" srcset="https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/red-panda-portrait-small.jpg"/>
+        <img src="https://roy-tian.github.io/learning-area/html/multimedia-and-embedding/mdn-splash-page-finished/images/red-panda-landscape.jpg" alt="" />
+      </picture>
+    </div>
+  </body>
+</html>

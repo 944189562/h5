@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar 日历</title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      td,
+      th {
+        border: 1px solid black;
+        padding: 3px;
+        text-align: center;
+      }
+
+      th {
+        font-weight: bold;
+        background-color: #e6e6e6;
+      }
+      .lastMoth {
+        color: rgba(0, 0, 0, 0.3);
+      }
+      .today {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="calendar"></div>
+    <script>
+      function createCalendar(elem, year, month) {
+        // 1. 创建表头
+        const mon = month - 1
+        const table = document.createElement('table')
+        let weekData = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU']
+        const date = new Date(year, month - 1)
+        const thead = document.createElement('thead')
+        const theadTr = document.createElement('tr')
+        for (let i = 0; i < weekData.length; i++) {
+          const th = document.createElement('th')
+          th.textContent = weekData[i]
+          theadTr.append(th)
+        }
+        thead.append(theadTr)
+        table.append(thead)
+        // 2. 第一行补空
+        const lastMoth = new Date(year, month - 1)
+        let tr = document.createElement('tr')
+        for (let i = 0; i < getDay(date); i++) {
+          lastMoth.setDate(lastMoth.getDate() - 1)
+          const td = document.createElement('td')
+          td.textContent = lastMoth.getDate()
+          td.classList.add('lastMoth')
+          tr.append(td)
+        }
+        // 3. 填充
+        while (date.getMonth() === mon) {
+          const td = document.createElement('td')
+          td.textContent = date.getDate()
+          if (date.setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0)) {
+            td.classList.add('today')
+          }
+          tr.append(td)
+          // 周末换行展示
+          if (getDay(date) % 7 === 6) {
+            table.append(tr)
+            tr = document.createElement('tr')
+          }
+          date.setDate(date.getDate() + 1)
+        }
+        // 4. 最后一行补空
+        const nextMoth = new Date(year, month)
+        for (let i = getDay(date); i < 7; i++) {
+          const td = document.createElement('td')
+          td.textContent = nextMoth.getDate()
+          nextMoth.setDate(nextMoth.getDate() + 1)
+          td.classList.add('lastMoth')
+          tr.append(td)
+        }
+        table.append(tr)
+        elem.append(table)
+      }
+
+      function getDay(d) {
+        let weekDay = d.getDay()
+        if (weekDay === 0) {
+          weekDay = 7
+        }
+
+        return weekDay - 1
+      }
+
+      createCalendar(calendar, 2022, 3)
+    </script>
+  </body>
+</html>

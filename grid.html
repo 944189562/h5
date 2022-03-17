@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        display: grid;
+        width: 100%;
+        padding: 10px;
+        height: 1000px;
+        /* grid-auto-flow: column; */
+        /* grid-template-columns: repeat(3, minmax(200px, 1fr)); */
+        /* grid-auto-rows: minmax(100px, auto); */
+        /* grid-template-rows: repeat(3, minmax(100px, 200px)); */
+        gap: 10px;
+        /* grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 100px 100px 100px; */
+        /* grid-template-areas:
+          'a b c'
+          'd e f'
+          'g h i'; */
+        /* grid-template-areas:
+          'a a a'
+          'b b b'
+          'c c c'; */
+        /* grid-template-areas:
+          'header header header'
+          'main main sidebar'
+          'footer footer footer'; */
+          grid-template-columns: 2fr 2fr 1fr;
+          grid-template-rows: repeat(3, 200px);
+      }
+
+      .inner {
+        border-radius: 5px;
+        border: 1px solid #4fb9e3;
+        background-color: cadetblue;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="inner">one</div>
+      <div class="inner">two</div>
+      <div class="inner">three</div>
+      <div class="inner">four</div>
+      <div class="inner">five</div>
+      <div class="inner">six</div>
+      <div class="inner">seven</div>
+      <div class="inner">eight</div>
+      <div class="inner">nine</div>
+      <!-- <div class="inner">ten</div> -->
+    </div>
+  </body>
+</html>
